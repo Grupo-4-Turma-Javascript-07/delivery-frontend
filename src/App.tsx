@@ -1,7 +1,7 @@
+import Categoria from "./components/Categoria";
+
 function App() {
-  return (
-    <div>App</div>
-  )
+  return <Categoria />;
 }
 
-export default App
+export default App;
