@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&family=Poppins:wght@400;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+
+  --color-white: #ffff;
+
+  --color-green-50: #dad7cd;
+  --color-green-100: #a3b18a;
+  --color-green-200: #588157;
+  --color-green-300: #3a5a40;
+  --color-green-400: #344e41;
+  
+  --font-family-Poppins: 'Poppins', 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+  --font-family-Nunito: 'Nunito', 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+}
+
+html {
+  @apply scroll-smooth;
+}
+
+body {
+  background-color: var(--color-green-50);
+  font-family: var(--font-family-Nunito);
+  color: #344e41;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-Poppins);
+}
