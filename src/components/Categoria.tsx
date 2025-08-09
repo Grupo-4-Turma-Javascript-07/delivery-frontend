@@ -58,7 +58,7 @@ function Categoria() {
   }
 
   async function handleDelete(id: number) {
-    if (window.confirm("Tem certeza que deseja excluir está categoria?")) {
+    if (window.confirm("Tem certeza que deseja excluir esta categoria?")) {
       await api.delete(`/categoria/${id}`);
       setCategorias(categorias.filter((cat) => cat.id !== id));
     }
@@ -94,7 +94,7 @@ function Categoria() {
     
     <div className="w-full max-w-4xl mx-auto px-4 py-8">
       {/* --- Card do Formulário --- */}
-      <div className="bg-white p-6 sm:p-8 rounded-xl shadow-lg mb-8">
+      <div className="bg-green-100 p-6 sm:p-8 rounded-xl shadow-lg mb-8">
         <h2 className="text-2xl font-bold text-slate-800 mb-6">
           {categoriaEmEdicao ? "Editar Categoria" : "Adicionar Nova Categoria"}
         </h2>
@@ -141,7 +141,7 @@ function Categoria() {
             <button
               type="submit"
               className="inline-flex justify-center py-2 px-5 border border-transparent shadow-sm text-sm font-semibold rounded-md text-white 
-                         bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
+                         bg-green-300 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
                          transition-colors duration-200"
             >
               {categoriaEmEdicao ? "Salvar Alterações" : "Adicionar Categoria"}
@@ -162,9 +162,9 @@ function Categoria() {
       </div>
 
       {/* --- Card da Lista de Categorias --- */}
-      <div className="bg-white p-6 sm:p-8 rounded-xl shadow-lg">
+      <div className="bg-green-100 p-6 sm:p-8 rounded-xl shadow-lg">
         <h2 className="text-2xl font-bold text-slate-800 mb-6">
-          Categorias Existentes
+          Categorias
         </h2>
 
         {loading && <p className="text-slate-500">Carregando...</p>}
@@ -177,7 +177,7 @@ function Categoria() {
           {categorias.map((cat) => (
             <li
               key={cat.id}
-              className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-4 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors duration-150"
+              className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-4 border border-slate-200 rounded-lg bg-white hover:bg-slate-50 transition-colors duration-150"
             >
               <div className="mb-3 sm:mb-0">
                 <span className="font-semibold text-slate-800">
@@ -189,13 +189,13 @@ function Categoria() {
               <div className="flex space-x-2 self-end sm:self-center">
                 <button
                   onClick={() => handleEdit(cat)}
-                  className="py-1 px-3 text-sm font-medium rounded-md text-yellow-800 bg-yellow-100 hover:bg-yellow-200 transition-colors duration-150"
+                  className="py-1 px-3 text-sm font-medium rounded-md text-black bg-yellow-200 hover:bg-yellow-300 hover:text-yellow-800 transition-colors duration-150"
                 >
                   Editar
                 </button>
                 <button
                   onClick={() => handleDelete(cat.id)}
-                  className="py-1 px-3 text-sm font-medium rounded-md text-red-800 bg-red-100 hover:bg-red-200 transition-colors duration-150"
+                  className="py-1 px-3 text-sm font-medium rounded-md text-black bg-red-200 hover:bg-red-300 hover:text-red-800 transition-colors duration-150"
                 >
                   Excluir
                 </button>
