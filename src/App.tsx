@@ -1,6 +1,18 @@
+import Cardapio from "./components/cardapio/Cardapio"
+import Contato from "./components/contato/Contato"
+import Home from "./components/home/Home"
+import Navbar from "./components/navbar/Navbar"
+
 function App() {
   return (
-    <div>App</div>
+    <>
+      <Navbar />
+      <main className="pt-[88px]">
+        <Home />
+        <Cardapio />
+        <Contato />
+      </main>
+    </>
   )
 }
 
