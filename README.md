@@ -3,7 +3,7 @@
 Interface web de um sistema de delivery, desenvolvido como parte do Projeto Integrador – Desafio 2 (Frontend) da Generation Brasil.
 O objetivo é oferecer uma experiência intuitiva para que clientes possam visualizar o cardápio, para a empresa adicionar, atualizar e deletar produtos e categorias, de forma simples e rápida.
 
-🔗 Repositório do Backend: [https://github.com/Grupo-4-Turma-Javascript-07/delivery-backend]
+🔗 Repositório do Backend: [Acesse aqui](https://github.com/Grupo-4-Turma-Javascript-07/delivery-backend)
 ---
 
 ## 📌 Descrição Geral
