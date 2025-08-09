@@ -1,13 +1,16 @@
-import { BasketIcon, MagnifyingGlassIcon } from "@phosphor-icons/react";
+import { BasketIcon, ListIcon, MagnifyingGlassIcon } from "@phosphor-icons/react";
+import { useState } from "react";
 import LogoTemperoBR from "../../assets/img/temperoBRlogo.png";
 
 function Navbar() {
+  const [open, setOpen] = useState(false);
+
   return (
-    <nav className="bg-white flex items-center justify-center drop-shadow-sm py-1.5 fixed w-full">
+    <nav className="bg-white flex items-center justify-center drop-shadow-sm py-1.5 px-8 fixed w-full">
       <div className="container flex items-center justify-between w-full">
         <img src={LogoTemperoBR} width={112} className="cursor-pointer" alt="Logo Tempero BR" />
 
-        <ul className="flex gap-8 text-xl">
+        <ul className="hidden md:flex gap-8 text-xl">
           <li className="cursor-pointer relative group hover:brightness-105 hover:text-green-200">
             <a href="#home">Home</a>
             <span
@@ -35,11 +38,42 @@ function Navbar() {
           <button>
             <BasketIcon width={26} height={26} className="cursor-pointer hover:text-green-200" />
           </button>
-          <button className="text-xl border-2 rounded-4xl py-0.5 px-4 cursor-pointer hover:bg-green-400 hover:text-white hover:border-green-400 transition-all duration-300">
+          <button className="hidden sm:flex text-xl border-2 rounded-4xl py-0.5 px-4 cursor-pointer hover:bg-green-400 hover:text-white hover:border-green-400 transition-all duration-300">
             Login
+          </button>
+
+          <button
+            className="md:hidden text-azul-claro text-3xl font-bold"
+            onClick={() => setOpen(!open)}
+            aria-label="Abrir menu"
+          >
+            <ListIcon size={32} weight="light" />
           </button>
         </div>
       </div>
+
+      {open && (
+        <ul className="flex flex-col items-end gap-4 bg-white opacity-90 text-xl mt-1.5 px-6 py-4 md:hidden fixed top-20 right-0 z-40 shadow-md rounded-lg w-52">
+          <li className="relative w-full group hover:brightness-105">
+            <a href="#home" onClick={() => setOpen(false)} className="block text-right">Home</a>
+            <span className="block border-b border-slate-300 mt-2 w-full" />
+          </li>
+          <li className="relative w-full group hover:brightness-105">
+            <a href="#cardapio" onClick={() => setOpen(false)} className="block text-right">Cardápio</a>
+            <span className="block border-b border-slate-300 mt-2 w-full" />
+          </li>
+          <li className="relative w-full group hover:brightness-105">
+            <a href="#contato" onClick={() => setOpen(false)} className="block text-right">Contato</a>
+            <span className="block border-b border-slate-300 mt-2 w-full sm:last:border-none" />
+          </li>
+
+          <li className="sm:hidden relative w-full group hover:brightness-105">
+            <a href="#login" onClick={() => setOpen(false)} className="block text-right">
+              Login
+            </a>
+          </li>
+        </ul>
+      )}
     </nav>
   )
 }
