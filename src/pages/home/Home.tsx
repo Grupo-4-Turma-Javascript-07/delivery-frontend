@@ -14,8 +14,11 @@ function Home() {
                         <h2 className='text-4xl font-bold text-green-400 mb-1'>
                             TemperoBR
                         </h2>
-                        <h3 className=" text-3xl font-light text-green-300 mb-4 relative">
-                        Sabores do <span className="text-green-400 relative z-10 px-2 text-shadow-lg/15 font-semibold">Brasil<span className="absolute left-0 bottom-1 w-full h-9 bg-amber-300 rounded -z-10 mask-t-from-0.5"></span></span>
+                        <h3 className="text-3xl font-light text-green-300 mb-4 relative">
+                            Sabores do{' '}
+                            <span className="relative z-10 px-2 text-shadow-lg/15 font-semibold text-green-400">Brasil
+                            <span className="absolute left-0 bottom-1 h-9 bg-amber-300 rounded border-r-[4px] border-[#262626] animate-brasil"></span>
+                            </span>
                         </h3>
                         <p className='text-lg text-green-400'>
                             No TemperoBR, cada garfada é uma viagem pelos sabores do nosso Brasil.
