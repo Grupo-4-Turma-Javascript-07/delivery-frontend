@@ -4,7 +4,7 @@ import Home from "./pages/home/Home";
 function App() {
   return (
     <>
-      <main className="pt-[88px]">
+      <main className="flex flex-col gap-24 mt-24 pt-[88px]">
         <Home />
         <Cardapio />
       </main>

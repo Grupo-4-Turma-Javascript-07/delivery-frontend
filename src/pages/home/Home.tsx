@@ -1,7 +1,7 @@
 function Home() {
   return (
     <>
-      <div id='home' className="min-h-screen bg-background flex items-center justify-center scroll-mt-20">
+      <div id='home' className="bg-background flex items-center justify-center scroll-mt-20">
         <div className='container grid grid-cols-2 text-nav-footer'>
           <div className="flex justify-center">
             <img
