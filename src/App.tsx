@@ -1,9 +1,7 @@
-import { CadastroProdutos } from './componentes/produtos/Produtos';
-
 function App() {
-  
-  return <CadastroProdutos />;
-  
+  return (
+    <div>App</div>
+  )
 }
 
-export default App;
+export default App
