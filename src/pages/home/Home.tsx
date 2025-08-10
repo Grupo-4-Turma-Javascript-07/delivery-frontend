@@ -16,8 +16,8 @@ function Home() {
                         </h2>
                         <h3 className="text-3xl font-light text-green-300 mb-4 relative">
                             Sabores do{' '}
-                            <span className="relative z-10 px-2 text-shadow-lg/15 font-semibold text-green-400">Brasil
-                            <span className="absolute left-0 bottom-1 h-9 bg-amber-300 rounded border-r-[4px] border-[#262626] animate-brasil"></span>
+                            <span className="relative z-10 px-2 text-shadow-lg/15 font-semibold text-amber-300">Brasil
+                            <span className="absolute left-0 bottom-1 h-9 bg-green-400 rounded border-r-[4px] border-[#262626] animate-brasil"></span>
                             </span>
                         </h3>
                         <p className='text-lg text-green-400'>
