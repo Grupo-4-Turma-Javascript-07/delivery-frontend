@@ -9,7 +9,7 @@ function Navbar() {
   return (
     <nav className="bg-white flex items-center justify-center drop-shadow-sm py-1.5 px-6 fixed w-full">
       <div className="container flex items-center justify-between w-full">
-        <div className="flex-1 justify-start">
+        <div className="flex flex-1 justify-start">
           <img src={LogoTemperoBR} width={112} className="cursor-pointer" alt="Logo Tempero BR" />
         </div>
 
@@ -44,15 +44,16 @@ function Navbar() {
             </button>
 
             <div
-              className={`transition-all duration-300 ease-in-out overflow-hidden ${openSearchInput ? "min-w-[80px] max-w-[400px] opacity-100" : "max-w-0 opacity-0 ml-0"
-                }`}
+              className={`transition-all duration-300 ease-in-out ${openSearchInput ? "min-w-[80px] max-w-[400px] opacity-100" : "max-w-0 opacity-0 ml-0"}`
+              }
             >
               <input
                 type="text"
                 placeholder="Buscar produtos..."
-                className="w-full px-4 py-2 placeholder:text-gray-400 border border-gray-300 rounded-full text-sm text-emerald-950 focus:outline-none"
+                className="w-full px-4 py-2 placeholder:text-gray-400 border border-gray-300 rounded-full text-sm text-emerald-950 focus:outline-none focus:ring-2 focus:ring-green-100 transition-all duration-300 ease-in-out"
               />
             </div>
+
           </div>
 
           <button>
