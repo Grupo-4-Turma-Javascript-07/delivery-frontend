@@ -1,5 +1,6 @@
 import Cardapio from "./components/cardapio/Cardapio"
 import Contato from "./components/contato/Contato"
+import Footer from "./components/footer/Footer"
 import Home from "./components/home/Home"
 import Navbar from "./components/navbar/Navbar"
 
@@ -12,6 +13,7 @@ function App() {
         <Cardapio />
         <Contato />
       </main>
+      <Footer />
     </>
   )
 }
