@@ -2,7 +2,6 @@
 @import "tailwindcss";
 
 @theme {
-
   --color-white: #ffff;
 
   --color-green-50: #dad7cd;
@@ -13,6 +12,8 @@
   
   --font-family-Poppins: 'Poppins', 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
   --font-family-Nunito: 'Nunito', 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+
+  --breakpoint-xs: 30rem;
 }
 
 html {
