@@ -1,3 +1,5 @@
+import Modal from "./modal/Modal"
+
 type Produto = {
   id: number
   nome: string
@@ -38,6 +40,22 @@ export default function Cardapio() {
               <span className="text-black font-semibold">
                 R$ {produto.preco.toFixed(2)}
               </span>
+
+              <Modal
+                component={
+                  <div style={{ padding: '1rem' }}>
+                    <h2>{produto.nome}</h2>
+                    <img
+                      src={produto.imagem}
+                      alt={produto.nome}
+                      style={{ width: '100%', borderRadius: '8px' }}
+                    />
+                    <p>{produto.descricao}</p>
+                    <p><strong>Preço:</strong> R$ {produto.preco.toFixed(2)}</p>
+                  </div>
+                }
+              />
+
             </div>
             <img
               src={produto.imagem}
