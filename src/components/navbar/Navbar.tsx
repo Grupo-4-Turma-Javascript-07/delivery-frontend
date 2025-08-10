@@ -4,13 +4,16 @@ import LogoTemperoBR from "../../assets/img/temperoBRlogo.png";
 
 function Navbar() {
   const [open, setOpen] = useState(false);
+  const [openSearchInput, setOpenSearchInput] = useState(false);
 
   return (
-    <nav className="bg-white flex items-center justify-center drop-shadow-sm py-1.5 px-8 fixed w-full">
+    <nav className="bg-white flex items-center justify-center drop-shadow-sm py-1.5 px-6 fixed w-full">
       <div className="container flex items-center justify-between w-full">
-        <img src={LogoTemperoBR} width={112} className="cursor-pointer" alt="Logo Tempero BR" />
+        <div className="flex-1 justify-start">
+          <img src={LogoTemperoBR} width={112} className="cursor-pointer" alt="Logo Tempero BR" />
+        </div>
 
-        <ul className="hidden md:flex gap-8 text-xl">
+        <ul className="hidden lg:flex lg:w-1/3 justify-center gap-8 text-xl">
           <li className="cursor-pointer relative group hover:brightness-105 hover:text-green-200">
             <a href="#home">Home</a>
             <span
@@ -31,10 +34,27 @@ function Navbar() {
           </li>
         </ul>
 
-        <div className="flex gap-6">
-          <button>
-            <MagnifyingGlassIcon width={26} height={26} className="cursor-pointer hover:text-green-200" />
-          </button>
+        <div className="flex-1 flex justify-end gap-6">
+          <div className="flex">
+            <button
+              onClick={() => setOpenSearchInput(!openSearchInput)}
+              className={`ml-2 ${openSearchInput && "mr-2"}`}
+            >
+              <MagnifyingGlassIcon width={26} height={26} className="cursor-pointer hover:text-green-200" />
+            </button>
+
+            <div
+              className={`transition-all duration-300 ease-in-out overflow-hidden ${openSearchInput ? "min-w-[80px] max-w-[400px] opacity-100" : "max-w-0 opacity-0 ml-0"
+                }`}
+            >
+              <input
+                type="text"
+                placeholder="Buscar produtos..."
+                className="w-full px-4 py-2 placeholder:text-gray-400 border border-gray-300 rounded-full text-sm text-emerald-950 focus:outline-none"
+              />
+            </div>
+          </div>
+
           <button>
             <BasketIcon width={26} height={26} className="cursor-pointer hover:text-green-200" />
           </button>
@@ -43,7 +63,7 @@ function Navbar() {
           </button>
 
           <button
-            className="md:hidden text-azul-claro text-3xl font-bold"
+            className="lg:hidden text-azul-claro text-3xl font-bold"
             onClick={() => setOpen(!open)}
             aria-label="Abrir menu"
           >
@@ -53,7 +73,7 @@ function Navbar() {
       </div>
 
       {open && (
-        <ul className="flex flex-col items-end gap-4 bg-white opacity-90 text-xl mt-1.5 px-6 py-4 md:hidden fixed top-20 right-0 z-40 shadow-md rounded-lg w-52">
+        <ul className="flex flex-col items-end gap-4 bg-white opacity-90 text-xl mt-1.5 px-6 py-4 lg:hidden fixed top-20 right-0 z-40 shadow-md rounded-lg w-52">
           <li className="relative w-full group hover:brightness-105">
             <a href="#home" onClick={() => setOpen(false)} className="block text-right">Home</a>
             <span className="block border-b border-slate-300 mt-2 w-full" />
