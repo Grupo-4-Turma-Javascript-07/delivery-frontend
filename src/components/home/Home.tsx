@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { api } from "../../api";
 import NavbarCat from "../navbar/NavbarCat";
-import type Produtos from "../produtos/Produtos";
+import type Categoria from "../categoria/Categoria";
 
 function Home() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [produtos, setProdutos] = useState<Produtos[]>([]);
+  const [produtosFiltrados, setProdutosFiltrados] = useState<Produtos[]>([]);
 
     const [categoriaFiltrada, setCategoriaFiltrada] = useState<{
     id: number | null;
@@ -21,11 +22,42 @@ function Home() {
       id: categoriaId,
       nome: categoriaNome
     });
+
+    if (categoriaId === null ) {
+      setProdutosFiltrados(produtos);
+    } else {
+      const produtosDaCategoria = produtos.filter(
+        produto => produto.categoria.id === categoriaId
+      );
+      setProdutosFiltrados(produtosDaCategoria);
+    }
   }
+
+interface Produtos {
+  id: number;
+  nome: string;
+  preco: number;
+  qtd_disp: number;
+  descricao: string;
+  foto: string;
+  usuario?: unknown;
+  categoria: Categoria;
+}
 
     useEffect(() => {
       buscarProdutos();
     }, []);
+
+    useEffect(() => {
+      if (categoriaFiltrada.id === null) {
+        setProdutosFiltrados(produtos);
+      } else {
+        const produtosDaCategoria = produtos.filter(
+          produto => produto.categoria.id === categoriaFiltrada.id
+        );
+        setProdutosFiltrados(produtosDaCategoria);
+      }
+    }, [produtos, categoriaFiltrada.id]);
   
     async function buscarProdutos() {
       try {
@@ -77,20 +109,30 @@ function Home() {
 
       <main className="w">
         <div className="bg-green-100 p-6 rounded-xl shadow-lg mt-14">
-          <h2 className="text-2xl font-bold text-slate-800 mb-4">
-            {categoriaFiltrada.nome}
-          </h2>
+            <h2 className="text-2xl font-bold text-slate-800 mb-4">
+              {categoriaFiltrada.nome}
+              {!loading && (
+                <span className="text-sm font-normal text-slate-600 ml-2">
+                  ({produtosFiltrados.length} produto{produtosFiltrados.length !== 1 ? 's' : ''})
+                </span>
+              )}
+            </h2>
             
             {/* Subs por on click get categoria.produto.map */}
 <ul className="space-y-3">
-          {!loading && !error && produtos.length === 0 && (
-            <p className="text-slate-500">Nenhum produto encontrado.</p>
+          {!loading && !error && produtosFiltrados.length === 0 && (
+              <p>
+                {categoriaFiltrada.id === null
+                  ? "Nenhum produto encontrado."
+                  : `Nenhum produto encontrado na categoria "${categoriaFiltrada.nome}".`
+                }
+              </p>
           )}
-          {produtos.map((produto) => (
+          {produtosFiltrados.map((produto) => (
             <li
               key={produto.id}
-              className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-4 border rounded-lg bg-white"
-            >
+                className="flex flex-col sm:flex-row sm:items-start sm:justify-between p-4 border rounded-lg bg-white hover:shadow-md transition-shadow duration-200"
+              >
               <div className="flex items-center space-x-4">
                 <img
                   src={produto.foto}
@@ -106,10 +148,11 @@ function Home() {
               </div>
             </li>
           ))}
-        </ul>          </div>
-          </main>
+        </ul>
+        </div>
+      </main>
           </div>
     </>
   )
 }
-export default Home
+export default Home;
