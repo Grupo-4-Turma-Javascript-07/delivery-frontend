@@ -4,7 +4,10 @@ import Footer from "./components/footer/Footer"
 import Home from "./components/home/Home"
 import Navbar from "./components/navbar/Navbar"
 
+
 function App() {
+  const [currentPage, setCurrentPage] = useState<'home' | 'admin'>('home');
+
   return (
     <>
       <Navbar />
@@ -15,7 +18,6 @@ function App() {
       </main>
       <Footer />
     </>
-
   )
 }
 export default App;
