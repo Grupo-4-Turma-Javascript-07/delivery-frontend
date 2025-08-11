@@ -1,21 +1,21 @@
 import { useEffect, useState } from "react";
 import { api } from "../../api";
 
-interface Categoria {
-  id: number;
-  categoria: string;
-  descricao: string;
-}
+  interface Categoria {
+    id: number;
+    categoria: string;
+    descricao: string;
+  }
 
-interface NavbarCatProps {
-  onCategoriaSelect?: (categoriaId: number | null, categoriaNome: string) => void;
-  onRecomendacao?: (categoriaId: number | null) => void;
-  categoriaAtiva?: number | null;
-}
+  interface NavbarCatProps {
+    onCategoriaSelect?: (categoriaId: number | null, categoriaNome: string) => void;
+    onRecomendacao?: (categoriaId: number | null) => void;
+    categoriaAtiva?: number | null;
+  }
 
-function NavbarCat({ onCategoriaSelect, onRecomendacao, categoriaAtiva }: NavbarCatProps) {
-  const [categorias, setCategorias] = useState<Categoria[]>([]);
-  const [loading, setLoading] = useState(false);
+  function NavbarCat({ onCategoriaSelect, onRecomendacao, categoriaAtiva }: NavbarCatProps) {
+    const [categorias, setCategorias] = useState<Categoria[]>([]);
+    const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     buscarCategorias();
@@ -57,7 +57,6 @@ function NavbarCat({ onCategoriaSelect, onRecomendacao, categoriaAtiva }: Navbar
             Todos
           </button>
 
-          {/* Botões das categorias */}
           {loading ? (
             <div className="flex space-x-2">
               {[...Array(4)].map((_, index) => (
@@ -84,7 +83,6 @@ function NavbarCat({ onCategoriaSelect, onRecomendacao, categoriaAtiva }: Navbar
             ))
           )}
 
-          {/* Botão de Recomendação - APENAS UMA VEZ, FORA DO LOOP */}
           <button
             onClick={() => onRecomendacao?.(categoriaAtiva ?? null)}
             className={`flex-shrink-0 px-4 py-2 text-sm font-medium rounded-full transition-all duration-200 whitespace-nowrap ${
@@ -98,7 +96,6 @@ function NavbarCat({ onCategoriaSelect, onRecomendacao, categoriaAtiva }: Navbar
         </div>
       </div>
 
-      {/* Custom scrollbar styles */}
       <style>{`
         .scrollbar-hide {
           -ms-overflow-style: none;

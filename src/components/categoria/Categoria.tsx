@@ -1,25 +1,25 @@
 import { useEffect, useState, type ChangeEvent, type FormEvent } from "react";
 import { api } from "../../api";
 
-interface Categoria {
-  id: number;
-  categoria: string;
-  descricao: string;
-}
+  interface Categoria {
+    id: number;
+    categoria: string;
+    descricao: string;
+  }
 
-const estadoInicialForm = {
-  descricao: "",
-  categoria: "",
-};
+  const estadoInicialForm = {
+    descricao: "",
+    categoria: "",
+  };
 
-function Categoria() {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-  const [categorias, setCategorias] = useState<Categoria[]>([]);
-  const [formData, setFormData] = useState(estadoInicialForm);
-  const [categoriaEmEdicao, setCategoriaEmEdicao] = useState<Categoria | null>(
-    null
-  );
+  function Categoria() {
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
+    const [categorias, setCategorias] = useState<Categoria[]>([]);
+    const [formData, setFormData] = useState(estadoInicialForm);
+    const [categoriaEmEdicao, setCategoriaEmEdicao] = useState<Categoria | null>(
+      null
+    );
 
   useEffect(() => {
     buscarCategorias();
@@ -131,7 +131,7 @@ function Categoria() {
               value={formData.descricao}
               onChange={handleInputChange}
               className="block w-full bg-slate-50 border border-slate-300 rounded-md shadow-sm p-3 text-slate-800
-                         focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               rows={4}
               required
             />
@@ -141,8 +141,8 @@ function Categoria() {
             <button
               type="submit"
               className="inline-flex justify-center py-2 px-5 border border-transparent shadow-sm text-sm font-semibold rounded-md text-white 
-                         bg-green-300 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
-                         transition-colors duration-200"
+                        bg-green-300 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
+                        transition-colors duration-200"
             >
               {categoriaEmEdicao ? "Salvar Alterações" : "Adicionar Categoria"}
             </button>
@@ -151,8 +151,8 @@ function Categoria() {
                 type="button"
                 onClick={handleCancel}
                 className="py-2 px-5 border border-slate-300 shadow-sm text-sm font-semibold rounded-md text-slate-700 
-                           bg-white hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500
-                           transition-colors duration-200"
+                          bg-white hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500
+                          transition-colors duration-200"
               >
                 Cancelar
               </button>
@@ -161,7 +161,6 @@ function Categoria() {
         </form>
       </div>
 
-      {/* --- Card da Lista de Categorias --- */}
       <div className="bg-green-100 p-6 sm:p-8 rounded-xl shadow-lg">
         <h2 className="text-2xl font-bold text-slate-800 mb-6">
           Categorias

@@ -2,33 +2,33 @@ import { useEffect, useState, type ChangeEvent, type FormEvent } from "react";
 import { api } from "../../api";
 import Categoria from "../categoria/Categoria";
 
-interface Produtos {
-  id: number;
-  nome: string;
-  preco: number;
-  qtd_disp: number;
-  descricao: string;
-  foto: string;
-  usuario?: unknown;
-  categoria: Categoria;
-}
+  interface Produtos {
+    id: number;
+    nome: string;
+    preco: number;
+    qtd_disp: number;
+    descricao: string;
+    foto: string;
+    usuario?: unknown;
+    categoria: Categoria;
+  }
 
-const estadoInicialForm = {
-  nome: "",
-  preco: "",
-  qtd_disp: "",
-  descricao: "",
-  foto: "",
-  categoria: "",
-};
+  const estadoInicialForm = {
+    nome: "",
+    preco: "",
+    qtd_disp: "",
+    descricao: "",
+    foto: "",
+    categoria: "",
+  };
 
-function Produtos() {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-  const [produtos, setProdutos] = useState<Produtos[]>([]);
-  const [categorias, setCategorias] = useState<Categoria[]>([]);
-  const [formData, setFormData] = useState(estadoInicialForm);
-  const [produtosEmEdicao, setProdutosEmEdicao] = useState<Produtos | null>(null);
+  function Produtos() {
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
+    const [produtos, setProdutos] = useState<Produtos[]>([]);
+    const [categorias, setCategorias] = useState<Categoria[]>([]);
+    const [formData, setFormData] = useState(estadoInicialForm);
+    const [produtosEmEdicao, setProdutosEmEdicao] = useState<Produtos | null>(null);
 
   useEffect(() => {
     buscarProdutos();
@@ -117,19 +117,15 @@ function Produtos() {
     // eslint-disable-next-line prefer-const
     let { name, value } = event.target;
 
-    // Para o preço, aceitar vírgula e trocar por ponto para facilitar o parseFloat
     if (name === "preco") {
       value = value.replace(",", ".");
     }
 
-    // Para qtd_disp impedir negativo, podemos usar min no input, mas reforçar aqui
     if (name === "qtd_disp") {
       if (value === "") {
-        // deixar vazio permite apagar no input
         setFormData((prevData) => ({ ...prevData, [name]: "" }));
         return;
       }
-      // permitir somente números >= 0
       const num = parseInt(value, 10);
       if (!isNaN(num) && num >= 0) {
         setFormData((prevData) => ({ ...prevData, [name]: num.toString() }));
@@ -148,7 +144,7 @@ function Produtos() {
 
   return (
     <div className="w-full max-w-4xl mx-auto px-4 py-8">
-      {/* --- Formulário de Produtos --- */}
+
       <div className="bg-green-100 p-6 sm:p-8 rounded-xl shadow-lg mb-8">
         <h2 className="text-2xl font-bold text-slate-800 mb-6">
           {produtosEmEdicao ? "Editar Produto" : "Adicionar Novo Produto"}
@@ -168,7 +164,7 @@ function Produtos() {
             value={formData.nome}
             onChange={handleInputChange}
             className="block w-full bg-slate-50 border border-slate-300 rounded-md shadow-sm p-3 text-slate-800
-                         focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           />
 
           <label
@@ -183,7 +179,7 @@ function Produtos() {
             value={formData.preco.replace(".", ",")}
             onChange={handleInputChange}
             className="block w-full bg-slate-50 border border-slate-300 rounded-md shadow-sm p-3 text-slate-800
-                         focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           />
 
           <label
@@ -199,7 +195,7 @@ function Produtos() {
             onChange={handleInputChange}
             min="0"
             className="block w-full bg-slate-50 border border-slate-300 rounded-md shadow-sm p-3 text-slate-800
-                         focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           />
 
           <label
@@ -213,7 +209,7 @@ function Produtos() {
             value={formData.descricao}
             onChange={handleInputChange}
             className="block w-full bg-slate-50 border border-slate-300 rounded-md shadow-sm p-3 text-slate-800
-                         focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             rows={4}
           />
 
@@ -229,7 +225,7 @@ function Produtos() {
             value={formData.foto}
             onChange={handleInputChange}
             className="block w-full bg-slate-50 border border-slate-300 rounded-md shadow-sm p-3 text-slate-800
-                         focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           />
 
           <label
@@ -304,14 +300,14 @@ function Produtos() {
                 <button
                   onClick={() => handleEdit(produto)}
                   className="inline-flex justify-center py-2 px-5 border border-transparent shadow-sm text-sm font-semibold rounded-md text-gray-800
-                         bg-yellow-200 hover:bg-yellow-300 cursor-pointer"
+                          bg-yellow-200 hover:bg-yellow-300 cursor-pointer"
                 >
                   Editar
                 </button>
                 <button
                   onClick={() => handleDelete(produto.id)}
                   className="inline-flex justify-center py-2 px-5 border border-transparent shadow-sm text-sm font-semibold rounded-md text-gray-800
-                         bg-red-200 hover:bg-red-300 cursor-pointer"
+                          bg-red-200 hover:bg-red-300 cursor-pointer"
                 >
                   Excluir
                 </button>
