@@ -167,7 +167,8 @@ function Produtos() {
             id="nome"
             value={formData.nome}
             onChange={handleInputChange}
-            className="block w-full p-3 border rounded bg-white focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400"
+            className="block w-full bg-slate-50 border border-slate-300 rounded-md shadow-sm p-3 text-slate-800
+                         focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           />
 
           <label
@@ -181,7 +182,8 @@ function Produtos() {
             name="preco"
             value={formData.preco.replace(".", ",")}
             onChange={handleInputChange}
-            className="block w-full p-3 border rounded bg-white focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400"
+            className="block w-full bg-slate-50 border border-slate-300 rounded-md shadow-sm p-3 text-slate-800
+                         focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           />
 
           <label
@@ -196,7 +198,8 @@ function Produtos() {
             value={formData.qtd_disp}
             onChange={handleInputChange}
             min="0"
-            className="block w-full p-3 border rounded bg-white focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400"
+            className="block w-full bg-slate-50 border border-slate-300 rounded-md shadow-sm p-3 text-slate-800
+                         focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           />
 
           <label
@@ -207,10 +210,10 @@ function Produtos() {
             </label>
           <textarea
             name="descricao"
-            placeholder="Descrição"
             value={formData.descricao}
             onChange={handleInputChange}
-            className="block w-full p-3 border rounded bg-white focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400"
+            className="block w-full bg-slate-50 border border-slate-300 rounded-md shadow-sm p-3 text-slate-800
+                         focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             rows={4}
           />
 
@@ -225,7 +228,8 @@ function Produtos() {
             name="foto"
             value={formData.foto}
             onChange={handleInputChange}
-            className="block w-full p-3 border rounded bg-white focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400"
+            className="block w-full bg-slate-50 border border-slate-300 rounded-md shadow-sm p-3 text-slate-800
+                         focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           />
 
           <label

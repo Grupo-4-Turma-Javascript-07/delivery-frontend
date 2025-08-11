@@ -38,7 +38,7 @@ function Footer() {
   }, []);
 
   return (
-    <footer className="bg-white border-t border-gray-200 drop-shadow-sm w-full pt-10 pb-4 px-6">
+    <footer className="bg-white border-t border-gray-200 drop-shadow-sm w-full mt-20 pt-10 pb-4 px-6">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 text-gray-700 text-sm md:justify-items-center">
 
         <div className="flex flex-col items-start gap-4">

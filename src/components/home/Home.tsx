@@ -1,6 +1,5 @@
 import { useState } from "react";
 import NavbarCat from "../navbar/NavbarCat";
-import Cardapio from "../cardapio/Cardapio";
 
 function Home() {
 
@@ -51,7 +50,7 @@ function Home() {
         </div>
       </div>
       
-      <div id="cardapio" className="w-full max-w-6xl mx-auto px-4 py-8 mt-8 space-y-4">
+      <div id="cardapio" className="w-full max-w-6xl mx-auto px-4 py-8 scroll-mt-2 space-y-8">
               <NavbarCat onCategoriaSelect={handleCategoriaSelect} />
 
       <main className="w">
@@ -59,9 +58,8 @@ function Home() {
           <h2 className="text-2xl font-bold text-slate-800 mb-4">
             {categoriaFiltrada.nome}
           </h2>
-            {categoriaFiltrada.id}
             
-            {/* Subs por Produtos */}
+            {/* Subs por on click get categoria.produto.map */}
             {Array.from({ length: 5 }, (_, i) => (
               <div key={i} className="bg-white p-4 rounded-lg border border-slate-200 mt-2">
                     <img
@@ -79,7 +77,6 @@ function Home() {
           </div>
           </main>
           </div>
-          <Cardapio />
     </>
   )
 }

@@ -28,12 +28,6 @@ function Navbar() {
             />
           </li>
           <li className="cursor-pointer relative group hover:brightness-105 hover:text-green-200">
-            <a href="#contato">Contato</a>
-            <span
-              className="absolute left-0 bottom-[-4px] w-full h-[2px] bg-green-200 scale-x-0 origin-left transition-transform duration-400 ease-in-out group-hover:scale-x-100"
-            />
-          </li>
-          <li className="cursor-pointer relative group hover:brightness-105 hover:text-green-200">
             <Link to='/admin'>Admin</Link>
             <span
               className="absolute left-0 bottom-[-4px] w-full h-[2px] bg-green-200 scale-x-0 origin-left transition-transform duration-400 ease-in-out group-hover:scale-x-100"
@@ -83,18 +77,17 @@ function Navbar() {
       {open && (
         <ul className="flex flex-col items-end gap-4 bg-white opacity-90 text-xl mt-1.5 px-6 py-4 lg:hidden fixed top-20 right-0 z-40 shadow-md rounded-lg w-52">
           <li className="relative w-full group hover:brightness-105">
-            <a href="#home" onClick={() => setOpen(false)} className="block text-right">Home</a>
+            <a href="/home" onClick={() => setOpen(false)} className="block text-right">Home</a>
             <span className="block border-b border-slate-300 mt-2 w-full" />
           </li>
           <li className="relative w-full group hover:brightness-105">
-            <a href="#cardapio" onClick={() => setOpen(false)} className="block text-right">Cardápio</a>
+            <a href="/home#cardapio" onClick={() => setOpen(false)} className="block text-right">Cardápio</a>
             <span className="block border-b border-slate-300 mt-2 w-full" />
           </li>
           <li className="relative w-full group hover:brightness-105">
-            <a href="#contato" onClick={() => setOpen(false)} className="block text-right">Contato</a>
+            <Link to="/admin" onClick={() => setOpen(false)} className="block text-right">Admin</Link>
             <span className="block border-b border-slate-300 mt-2 w-full sm:last:border-none" />
           </li>
-
           <li className="sm:hidden relative w-full group hover:brightness-105">
             <a href="#login" onClick={() => setOpen(false)} className="block text-right">
               Login
