@@ -1,6 +1,6 @@
 import { useEffect, useState, type ChangeEvent, type FormEvent } from "react";
 import { api } from "../../api";
-import type Categoria from "../Categoria";
+import Categoria from "../categoria/Categoria";
 
 interface Produtos {
   id: number;
@@ -9,7 +9,7 @@ interface Produtos {
   qtd_disp: number;
   descricao: string;
   foto: string;
-  usuario?: any;
+  usuario?: unknown;
   categoria: Categoria;
 }
 
@@ -114,6 +114,7 @@ function Produtos() {
   function handleInputChange(
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) {
+    // eslint-disable-next-line prefer-const
     let { name, value } = event.target;
 
     // Para o preço, aceitar vírgula e trocar por ponto para facilitar o parseFloat
@@ -154,59 +155,92 @@ function Produtos() {
         </h2>
 
         <form onSubmit={handleSubmit} className="space-y-6">
+          <label
+            htmlFor="nome"
+            className="block text-sm font-medium text-slate-800 mb-1"
+          >
+            Nome do Produto
+          </label>
           <input
             type="text"
             name="nome"
-            placeholder="Nome do produto"
+            id="nome"
             value={formData.nome}
             onChange={handleInputChange}
-            className="block w-full p-3 border rounded bg-white"
+            className="block w-full p-3 border rounded bg-white focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400"
           />
 
+          <label
+            htmlFor="preco"
+            className="block text-sm font-medium text-slate-800 mb-1"
+          >
+            Preço
+          </label>
           <input
             type="text" // text para poder digitar vírgula
             name="preco"
-            placeholder="Preço"
             value={formData.preco.replace(".", ",")}
             onChange={handleInputChange}
-            className="block w-full p-3 border rounded bg-white"
+            className="block w-full p-3 border rounded bg-white focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400"
           />
 
+          <label
+            htmlFor="qtd_disp"
+            className="block text-sm font-medium text-slate-800 mb-1"
+          >
+            Quantidade disponível
+          </label>
           <input
             type="number"
             name="qtd_disp"
-            placeholder="Quantidade disponível"
             value={formData.qtd_disp}
             onChange={handleInputChange}
             min="0"
-            className="block w-full p-3 border rounded bg-white"
+            className="block w-full p-3 border rounded bg-white focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400"
           />
 
+          <label
+            htmlFor="descricao"
+            className="block text-sm font-medium text-slate-800 mb-1"
+            >
+              Descrição
+            </label>
           <textarea
             name="descricao"
             placeholder="Descrição"
             value={formData.descricao}
             onChange={handleInputChange}
-            className="block w-full p-3 border rounded bg-white"
+            className="block w-full p-3 border rounded bg-white focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400"
             rows={4}
           />
 
+          <label
+            htmlFor="descricao"
+            className="block text-sm font-medium text-slate-800 mb-1"
+            >
+              Imagem
+            </label>
           <input
             type="text"
             name="foto"
-            placeholder="URL da foto"
             value={formData.foto}
             onChange={handleInputChange}
-            className="block w-full p-3 border rounded bg-white"
+            className="block w-full p-3 border rounded bg-white focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400"
           />
 
+          <label
+            htmlFor="descricao"
+            className="block text-sm font-medium text-slate-800 mb-1"
+            >
+              Categoria
+            </label>
           <select
             name="categoria"
             value={formData.categoria}
             onChange={handleInputChange}
-            className="block w-full p-3 border rounded bg-white"
+            className="block w-full p-3 border rounded bg-white focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400"
           >
-            <option value="">Selecione uma categoria</option>
+            <option value=""></option>
             {categorias.map((cat) => (
               <option key={cat.id} value={cat.id}>
                 {cat.categoria}
@@ -218,7 +252,7 @@ function Produtos() {
             <button
               type="submit"
               className="inline-flex justify-center py-2 px-5 border border-transparent shadow-sm text-sm font-semibold rounded-md text-white 
-                         bg-green-300 hover:bg-green-700 cursor-pointer"
+                        bg-green-300 hover:bg-green-500 cursor-pointer"
             >
               {produtosEmEdicao ? "Salvar Alterações" : "Adicionar Produto"}
             </button>
@@ -227,7 +261,7 @@ function Produtos() {
                 type="button"
                 onClick={handleCancel}
                 className="inline-flex justify-center py-2 px-5 border border-transparent shadow-sm text-sm font-semibold rounded-md text-white 
-                         bg-green-300 hover:bg-green-700 cursor-pointer"
+                        bg-green-300 hover:bg-green-500 cursor-pointer"
               >
                 Cancelar
               </button>
@@ -241,6 +275,9 @@ function Produtos() {
         <h2 className="text-2xl font-bold text-slate-800 mb-6">Lista de Produtos</h2>
 
         <ul className="space-y-3">
+          {!loading && !error && produtos.length === 0 && (
+            <p className="text-slate-500">Nenhuma produto encontrado.</p>
+          )}
           {produtos.map((produto) => (
             <li
               key={produto.id}

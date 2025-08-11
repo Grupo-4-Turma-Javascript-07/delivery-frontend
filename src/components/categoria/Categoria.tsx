@@ -103,7 +103,7 @@ function Categoria() {
           <div>
             <label
               htmlFor="categoria"
-              className="block text-sm font-medium text-slate-600 mb-1"
+              className="block text-sm font-medium text-slate-800 mb-1"
             >
               Nome da Categoria
             </label>
@@ -114,14 +114,14 @@ function Categoria() {
               value={formData.categoria}
               onChange={handleInputChange}
               className="block w-full bg-slate-50 border border-slate-300 rounded-md shadow-sm p-3 text-slate-800
-                         focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               required
             />
           </div>
           <div>
             <label
               htmlFor="descricao"
-              className="block text-sm font-medium text-slate-600 mb-1"
+              className="block text-sm font-medium text-slate-800 mb-1"
             >
               Descrição
             </label>
