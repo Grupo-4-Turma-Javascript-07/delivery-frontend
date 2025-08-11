@@ -1,11 +1,14 @@
+
 import Cardapio from "./components/cardapio/Cardapio"
 import Categoria from "./components/categoria/Categoria"
+import Produtos from "./components/produtos/Produtos";
 import Footer from "./components/footer/Footer"
 import Home from "./components/home/Home"
 import Navbar from "./components/navbar/Navbar"
 
 
 function App() {
+
 
   return (
     
@@ -15,6 +18,7 @@ function App() {
         <Home />
         <Cardapio />
         <Categoria />
+        <Produtos />
       </main>
       <Footer />
     </>
