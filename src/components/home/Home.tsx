@@ -17,21 +17,26 @@ function Home() {
     nome: "Todos"
   });
 
-  function handleCategoriaSelect(categoriaId: number | null, categoriaNome: string) {
-    setCategoriaFiltrada({
-      id: categoriaId,
-      nome: categoriaNome
-    });
-
-    if (categoriaId === null ) {
-      setProdutosFiltrados(produtos);
-    } else {
-      const produtosDaCategoria = produtos.filter(
-        produto => produto.categoria.id === categoriaId
-      );
-      setProdutosFiltrados(produtosDaCategoria);
-    }
+function handleCategoriaSelect(categoriaId: number | null, categoriaNome: string) {
+  setCategoriaFiltrada({
+    id: categoriaId,
+    nome: categoriaNome
+  });
+  
+  // Filtrar produtos baseado na categoria
+  if (categoriaId === null) {
+    setProdutosFiltrados(produtos);
+  } else if (categoriaId === -1) {
+    // Categoria especial de recomendação - não fazer nada aqui
+    // A lógica está na função recomendarProduto
+    return;
+  } else {
+    const produtosDaCategoria = produtos.filter(
+      produto => produto.categoria.id === categoriaId
+    );
+    setProdutosFiltrados(produtosDaCategoria);
   }
+}
 
 interface Produtos {
   id: number;
@@ -48,16 +53,20 @@ interface Produtos {
       buscarProdutos();
     }, []);
 
-    useEffect(() => {
-      if (categoriaFiltrada.id === null) {
-        setProdutosFiltrados(produtos);
-      } else {
-        const produtosDaCategoria = produtos.filter(
-          produto => produto.categoria.id === categoriaFiltrada.id
-        );
-        setProdutosFiltrados(produtosDaCategoria);
-      }
-    }, [produtos, categoriaFiltrada.id]);
+useEffect(() => {
+  if (categoriaFiltrada.id === null) {
+    setProdutosFiltrados(produtos);
+  } else if (categoriaFiltrada.id === -1) {
+    // Categoria especial de recomendação - não filtrar automaticamente
+    // Os produtos já foram definidos na função recomendarProduto
+    return;
+  } else {
+    const produtosDaCategoria = produtos.filter(
+      produto => produto.categoria.id === categoriaFiltrada.id
+    );
+    setProdutosFiltrados(produtosDaCategoria);
+  }
+}, [produtos, categoriaFiltrada.id]);
   
     async function buscarProdutos() {
       try {
@@ -70,6 +79,36 @@ interface Produtos {
         setLoading(false);
       }
     }
+
+function recomendarProduto(categoriaId?: number | null) {
+  let produtosParaRecomendacao = produtos;
+  
+  // Se uma categoria foi especificada, filtrar por ela
+  if (categoriaId && categoriaId !== null) {
+    produtosParaRecomendacao = produtos.filter(
+      produto => produto.categoria.id === categoriaId
+    );
+  }
+  
+  // Se não há produtos disponíveis
+  if (produtosParaRecomendacao.length === 0) {
+    alert("Nenhum produto disponível para recomendação!");
+    return;
+  }
+  
+  // Selecionar produto aleatório
+  const indiceAleatorio = Math.floor(Math.random() * produtosParaRecomendacao.length);
+  const produtoEscolhido = produtosParaRecomendacao[indiceAleatorio];
+  
+  // Definir como "categoria especial" de recomendação
+  setCategoriaFiltrada({
+    id: -1, // ID especial para recomendação
+    nome: "🎯 Recomendação Especial"
+  });
+  
+  // Mostrar apenas o produto recomendado
+  setProdutosFiltrados([produtoEscolhido]);
+}
   
   
   return (
@@ -105,7 +144,11 @@ interface Produtos {
       </div>
       
       <div id="cardapio" className="w-full max-w-6xl mx-auto px-4 py-8 scroll-mt-2 space-y-8">
-              <NavbarCat onCategoriaSelect={handleCategoriaSelect} />
+<NavbarCat 
+  onCategoriaSelect={handleCategoriaSelect}
+  onRecomendacao={recomendarProduto}
+  categoriaAtiva={categoriaFiltrada.id}
+/>
 
       <main className="w">
         <div className="bg-green-100 p-6 rounded-xl shadow-lg mt-14">
@@ -119,7 +162,7 @@ interface Produtos {
             </h2>
             
             {/* Subs por on click get categoria.produto.map */}
-<ul className="space-y-3">
+          <ul className="space-y-3">
           {!loading && !error && produtosFiltrados.length === 0 && (
               <p>
                 {categoriaFiltrada.id === null
