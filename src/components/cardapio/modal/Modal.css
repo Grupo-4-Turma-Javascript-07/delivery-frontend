@@ -1,0 +1,11 @@
+.popup-content {
+  border-radius: 1rem;
+  padding-bottom: 2rem;
+  min-height: 50vh;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+  display: flex;
+}
+
+button {
+  cursor: pointer
+}
