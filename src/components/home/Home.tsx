@@ -1,7 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { api } from "../../api";
 import NavbarCat from "../navbar/NavbarCat";
+import type Produtos from "../produtos/Produtos";
 
 function Home() {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [produtos, setProdutos] = useState<Produtos[]>([]);
 
     const [categoriaFiltrada, setCategoriaFiltrada] = useState<{
     id: number | null;
@@ -17,6 +22,23 @@ function Home() {
       nome: categoriaNome
     });
   }
+
+    useEffect(() => {
+      buscarProdutos();
+    }, []);
+  
+    async function buscarProdutos() {
+      try {
+        setLoading(true);
+        const res = await api.get("/produtos");
+        setProdutos(res.data);
+      } catch {
+        setError("Erro ao buscar produtos");
+      } finally {
+        setLoading(false);
+      }
+    }
+  
   
   return (
     <>
@@ -60,21 +82,31 @@ function Home() {
           </h2>
             
             {/* Subs por on click get categoria.produto.map */}
-            {Array.from({ length: 5 }, (_, i) => (
-              <div key={i} className="bg-white p-4 rounded-lg border border-slate-200 mt-2">
-                    <img
-                      src='https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.receiteria.com.br%2Freceita%2Farroz-biro-biro-com-calabresa%2F&psig=AOvVaw2LIQp3sC7VQfV-mYqtj2NK&ust=1754963063629000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCMjcsoHRgY8DFQAAAAAdAAAAABAE'
-                      alt=''
-                      style={{ width: '100%', borderRadius: '8px' }}
-                    />
-                <h4 className="font-medium text-slate-700">Produto {i + 1}</h4>
-                <p className="text-slate-600 text-sm">
-                  Exemplo de produto da categoria {categoriaFiltrada.nome}.
-                  Este conteúdo demonstra como a navbar permanece fixa no topo durante o scroll.
-                </p>
+<ul className="space-y-3">
+          {!loading && !error && produtos.length === 0 && (
+            <p className="text-slate-500">Nenhum produto encontrado.</p>
+          )}
+          {produtos.map((produto) => (
+            <li
+              key={produto.id}
+              className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-4 border rounded-lg bg-white"
+            >
+              <div className="flex items-center space-x-4">
+                <img
+                  src={produto.foto}
+                  alt={produto.nome}
+                  className="w-32 h-32 object-cover rounded-lg"
+                />
+                <div>
+                  <span className="font-semibold">{produto.nome}</span>
+                  <p>Preço: R$ {produto.preco.toFixed(2).replace(".", ",")}</p>
+                  <p>Quantidade: {produto.qtd_disp}</p>
+                  <p>{produto.descricao}</p>
+                </div>
               </div>
-            ))}
-          </div>
+            </li>
+          ))}
+        </ul>          </div>
           </main>
           </div>
     </>
