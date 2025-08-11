@@ -1,13 +1,13 @@
-import Cardapio from "./components/cardapio/Cardapio"
-import Contato from "./components/contato/Contato"
-import Home from "./pages/home/Home";
-import Navbar from "./components/navbar/Navbar"
+import Cardapio from "./components/cardapio/Cardapio";
+import Contato from "./components/contato/Contato";
+import Home from "./components/home/Home";
+import Navbar from "./components/navbar/Navbar";
 
 function App() {
   return (
     <>
       <Navbar />
-      <main className="flex flex-col gap-24 mt-24 pt-[88px]">
+      <main className="flex flex-col gap-24 pt-[88px]">
         <Home />
         <Cardapio />
         <Contato />
