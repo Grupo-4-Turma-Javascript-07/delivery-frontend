@@ -7,7 +7,7 @@ function Navbar() {
   const [openSearchInput, setOpenSearchInput] = useState(false);
 
   return (
-    <nav className="bg-white flex items-center justify-center drop-shadow-sm py-1.5 px-6 fixed w-full">
+    <nav className="bg-white flex items-center justify-center drop-shadow-sm py-1.5 px-6 fixed w-full z-20">
       <div className="container flex items-center justify-between w-full">
         <div className="flex flex-1 justify-start">
           <img src={LogoTemperoBR} width={112} className="cursor-pointer" alt="Logo Tempero BR" />

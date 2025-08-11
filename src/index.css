@@ -29,3 +29,14 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-family-Poppins);
 }
+
+@keyframes reveal-brasil {
+  0% { width: 100%; z-index: 1; }
+  50% { width: 0%; z-index: 1; }
+  51% { width: 0%; z-index: -1; }
+  100% { width: 100%; z-index: -1; }
+}
+
+.animate-brasil {
+  animation: reveal-brasil 5s forwards;
+}

@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <main className="pt-[88px]">
+      <main className="flex flex-col gap-24 pt-[88px]">
         <Home />
         <Cardapio />
         <Contato />
@@ -17,5 +17,4 @@ function App() {
     </>
   )
 }
-
-export default App
+export default App;
