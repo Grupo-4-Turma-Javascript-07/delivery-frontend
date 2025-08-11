@@ -1,6 +1,7 @@
 import { BasketIcon, ListIcon, MagnifyingGlassIcon } from "@phosphor-icons/react";
 import { useState } from "react";
 import LogoTemperoBR from "../../assets/img/temperoBRlogo.png";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const [open, setOpen] = useState(false);
@@ -15,7 +16,7 @@ function Navbar() {
 
         <ul className="hidden lg:flex lg:w-1/3 justify-center gap-8 text-xl">
           <li className="cursor-pointer relative group hover:brightness-105 hover:text-green-200">
-            <a href="#home">Home</a>
+            <Link to='/home'>Home</Link>
             <span
               className="absolute left-0 bottom-[-4px] w-full h-[2px] bg-green-200 scale-x-0 origin-left transition-transform duration-400 ease-in-out group-hover:scale-x-100"
             />
@@ -33,7 +34,7 @@ function Navbar() {
             />
           </li>
           <li className="cursor-pointer relative group hover:brightness-105 hover:text-green-200">
-            <a href="#categoria">Admin</a>
+            <Link to='/admin'>Admin</Link>
             <span
               className="absolute left-0 bottom-[-4px] w-full h-[2px] bg-green-200 scale-x-0 origin-left transition-transform duration-400 ease-in-out group-hover:scale-x-100"
             />

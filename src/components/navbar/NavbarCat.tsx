@@ -49,7 +49,7 @@ function NavbarCat({ onCategoriaSelect }: NavbarCatProps) {
           {/* Botão "Todos" */}
           <button
             onClick={() => handleCategoriaClick(null)}
-            className={`flex-shrink-0 px-4 py-2 text-sm font-medium rounded-full transition-all duration-200 whitespace-nowrap ${
+            className={`flex-shrink-0 px-4 py-2 text-sm font-medium rounded-full transition-all duration-200 whitespace-nowrap  ${
               categoriaAtiva === null
                 ? "bg-green-200 text-slate-800 shadow-md"
                 : "bg-slate-100 text-slate-600 hover:bg-green-100 hover:text-slate-800"

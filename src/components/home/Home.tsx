@@ -1,5 +1,6 @@
 import { useState } from "react";
 import NavbarCat from "../navbar/NavbarCat";
+import Cardapio from "../cardapio/Cardapio";
 
 function Home() {
 
@@ -50,40 +51,19 @@ function Home() {
         </div>
       </div>
       
-      <div className="w-full max-w-6xl mx-auto px-4 py-8 mt-8 space-y-4">
+      <div id="cardapio" className="w-full max-w-6xl mx-auto px-4 py-8 mt-8 space-y-4">
               <NavbarCat onCategoriaSelect={handleCategoriaSelect} />
 
       <main className="w">
-        <div className="bg-green-100 p-6 rounded-xl shadow-lg">
+        <div className="bg-green-100 p-6 rounded-xl shadow-lg mt-14">
           <h2 className="text-2xl font-bold text-slate-800 mb-4">
             {categoriaFiltrada.nome}
           </h2>
-            {categoriaFiltrada.id ? (
-            <div className="text-center py-12">
-              <div className="text-slate-600">
-                <div className="text-6xl mb-4">🍽️</div>
-                <p className="text-lg">
-                  <strong>{categoriaFiltrada.nome}</strong>
-                </p>
-              </div>
-            </div>
-          ) : (
-            <div className="text-center py-12">
-              <div className="text-slate-600">
-                <div className="text-6xl mb-4">🇧🇷</div>
-                <p className="text-lg">
-                  Todos os produtos serão exibidos aqui
-                </p>
-                <p className="text-sm text-slate-500 mt-2">
-                  Aguardando implementação do componente de produtos
-                </p>
-              </div>
-            </div>
-          )}
+            {categoriaFiltrada.id}
             
             {/* Subs por Produtos */}
             {Array.from({ length: 5 }, (_, i) => (
-              <div key={i} className="bg-white p-4 rounded-lg border border-slate-200">
+              <div key={i} className="bg-white p-4 rounded-lg border border-slate-200 mt-2">
                     <img
                       src='https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.receiteria.com.br%2Freceita%2Farroz-biro-biro-com-calabresa%2F&psig=AOvVaw2LIQp3sC7VQfV-mYqtj2NK&ust=1754963063629000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCMjcsoHRgY8DFQAAAAAdAAAAABAE'
                       alt=''
@@ -99,6 +79,7 @@ function Home() {
           </div>
           </main>
           </div>
+          <Cardapio />
     </>
   )
 }
