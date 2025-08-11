@@ -9,7 +9,7 @@ type Produto = {
 }
 
 export default function Cardapio() {
-  const produtos: Produto[] = [
+     const produtos: Produto[] = [
     {
       id: 1,
       nome: "Feijoada (500g)",
@@ -27,6 +27,7 @@ export default function Cardapio() {
   ]
 
   return (
+
     <div className="w-full max-w-3xl mx-auto bg-white p-4">
       {produtos.length > 0 ? (
         produtos.map(produto => (

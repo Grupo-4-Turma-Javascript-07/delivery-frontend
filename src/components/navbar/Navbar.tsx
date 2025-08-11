@@ -7,7 +7,7 @@ function Navbar() {
   const [openSearchInput, setOpenSearchInput] = useState(false);
 
   return (
-    <nav className="bg-white flex items-center justify-center drop-shadow-sm py-1.5 px-6 fixed w-full z-20">
+    <nav className="bg-white flex items-center justify-center drop-shadow-sm py-1.5 px-6 fixed w-full z-1000">
       <div className="container flex items-center justify-between w-full">
         <div className="flex flex-1 justify-start">
           <img src={LogoTemperoBR} width={112} className="cursor-pointer" alt="Logo Tempero BR" />
@@ -28,6 +28,12 @@ function Navbar() {
           </li>
           <li className="cursor-pointer relative group hover:brightness-105 hover:text-green-200">
             <a href="#contato">Contato</a>
+            <span
+              className="absolute left-0 bottom-[-4px] w-full h-[2px] bg-green-200 scale-x-0 origin-left transition-transform duration-400 ease-in-out group-hover:scale-x-100"
+            />
+          </li>
+          <li className="cursor-pointer relative group hover:brightness-105 hover:text-green-200">
+            <a href="#categoria">Admin</a>
             <span
               className="absolute left-0 bottom-[-4px] w-full h-[2px] bg-green-200 scale-x-0 origin-left transition-transform duration-400 ease-in-out group-hover:scale-x-100"
             />

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { api } from "../api";
+import { api } from "../../api";
 
 interface Categoria {
   id: number;
@@ -43,7 +43,7 @@ function NavbarCat({ onCategoriaSelect }: NavbarCatProps) {
   }
 
   return (
-    <div className="sticky top-0 z-50 bg-white border-b border-slate-200 shadow-sm">
+    <div className="sticky top-[86px] z-50 bg-white rounded-lg border-b border-slate-200 shadow-sm">
       <div className="w-full max-w-6xl mx-auto px-4">
         <div className="flex items-center space-x-1 py-3 overflow-x-auto scrollbar-hide">
           {/* Botão "Todos" */}

@@ -1,20 +1,20 @@
 import Cardapio from "./components/cardapio/Cardapio"
-import Contato from "./components/contato/Contato"
+import Categoria from "./components/categoria/Categoria"
 import Footer from "./components/footer/Footer"
 import Home from "./components/home/Home"
 import Navbar from "./components/navbar/Navbar"
 
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'admin'>('home');
 
   return (
+    
     <>
       <Navbar />
       <main className="flex flex-col gap-24 pt-[88px]">
         <Home />
         <Cardapio />
-        <Contato />
+        <Categoria />
       </main>
       <Footer />
     </>

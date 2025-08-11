@@ -1,5 +1,5 @@
 import { useEffect, useState, type ChangeEvent, type FormEvent } from "react";
-import { api } from "../api";
+import { api } from "../../api";
 
 interface Categoria {
   id: number;
@@ -92,7 +92,7 @@ function Categoria() {
 
   return (
     
-    <div className="w-full max-w-4xl mx-auto px-4 py-8">
+    <div id='categoria' className="w-full max-w-4xl mx-auto px-4 py-8">
       {/* --- Card do Formulário --- */}
       <div className="bg-green-100 p-6 sm:p-8 rounded-xl shadow-lg mb-8">
         <h2 className="text-2xl font-bold text-slate-800 mb-6">
