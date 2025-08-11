@@ -9,11 +9,12 @@ interface Categoria {
 
 interface NavbarCatProps {
   onCategoriaSelect?: (categoriaId: number | null, categoriaNome: string) => void;
+  onRecomendacao?: (categoriaId: number | null) => void;
+  categoriaAtiva?: number | null;
 }
 
-function NavbarCat({ onCategoriaSelect }: NavbarCatProps) {
+function NavbarCat({ onCategoriaSelect, onRecomendacao, categoriaAtiva }: NavbarCatProps) {
   const [categorias, setCategorias] = useState<Categoria[]>([]);
-  const [categoriaAtiva, setCategoriaAtiva] = useState<number | null>(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -34,10 +35,8 @@ function NavbarCat({ onCategoriaSelect }: NavbarCatProps) {
 
   function handleCategoriaClick(categoria: Categoria | null) {
     if (categoria) {
-      setCategoriaAtiva(categoria.id);
       onCategoriaSelect?.(categoria.id, categoria.categoria);
     } else {
-      setCategoriaAtiva(null);
       onCategoriaSelect?.(null, "Todos");
     }
   }
@@ -49,7 +48,7 @@ function NavbarCat({ onCategoriaSelect }: NavbarCatProps) {
           {/* Botão "Todos" */}
           <button
             onClick={() => handleCategoriaClick(null)}
-            className={`flex-shrink-0 px-4 py-2 text-sm font-medium rounded-full transition-all duration-200 whitespace-nowrap  ${
+            className={`flex-shrink-0 px-4 py-2 text-sm font-medium rounded-full transition-all duration-200 whitespace-nowrap ${
               categoriaAtiva === null
                 ? "bg-green-200 text-slate-800 shadow-md"
                 : "bg-slate-100 text-slate-600 hover:bg-green-100 hover:text-slate-800"
@@ -84,6 +83,18 @@ function NavbarCat({ onCategoriaSelect }: NavbarCatProps) {
               </button>
             ))
           )}
+
+          {/* Botão de Recomendação - APENAS UMA VEZ, FORA DO LOOP */}
+          <button
+            onClick={() => onRecomendacao?.(categoriaAtiva ?? null)}
+            className={`flex-shrink-0 px-4 py-2 text-sm font-medium rounded-full transition-all duration-200 whitespace-nowrap ${
+              categoriaAtiva === -1
+                ? "bg-amber-200 text-amber-800 shadow-md"
+                : "bg-amber-100 text-amber-700 hover:bg-amber-200"
+            }`}
+          >
+            🎯 Recomendação!
+          </button>
         </div>
       </div>
 
